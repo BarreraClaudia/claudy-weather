@@ -9,7 +9,32 @@
 </head>
 
 <body>
-    <h1>ClaudyWeather</h1>
+    <header>
+        <h1>ClaudyWeather</h1>
+
+        <form>
+            <input type="search" name="search-location" id="search-location" placeholder="Search Location" required>
+            <button class="search-location-button">Search</button>
+            <span class="input-error" aria-live="polite"></span>
+        </form>
+    </header>
+
+    <div class="todays-weather">
+        <h2>Today's Weather</h2>
+        <div class="todays-weather-content"></div>
+    </div>
+
+    <div class="hourly-forecast">
+        <h2>Hourly Forecast</h2>
+        <div class="hourly-forecast-content"></div>
+    </div>
+
+    <div class="10-day-forecast">
+        <h2>10 Day Forecast</h2>
+        <div class="10-day-forecast-content"></div>
+    </div>
+
+    <!-- <div class="content"></div> -->
 </body>
 
 </html>
