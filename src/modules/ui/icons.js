@@ -12,8 +12,6 @@ function createIcon(iconData) {
   let icon = document.createElement('img');
   icon.classList.add('weather-icon');
 
-  console.log(iconData);
-
   switch (iconData) {
     case 'snow':
       icon.src = snowScr;
