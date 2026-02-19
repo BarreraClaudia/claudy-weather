@@ -136,3 +136,7 @@ Layout (replace below with your own styles)
 body {
   min-height: 100vh;
 }
+
+.weather-icon {
+  width: 60px;
+}
