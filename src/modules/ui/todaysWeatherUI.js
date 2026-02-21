@@ -1,4 +1,5 @@
 import { format, parse } from 'date-fns';
+import { createIcon } from './icons';
 
 function formatTodaysDate() {
   let todaysDate = new Date();
@@ -47,6 +48,9 @@ function createTodaysWeatherCard(data) {
   let date = document.createElement('p');
   date.textContent = formatTodaysDate();
   firstContainer.appendChild(date);
+
+  let icon = createIcon(data.currentConditions.icon);
+  firstContainer.appendChild(icon);
 
   let temp = document.createElement('p');
   temp.textContent = `${data.currentConditions.temp}°F`;
