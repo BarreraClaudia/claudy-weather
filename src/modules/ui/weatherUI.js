@@ -1,5 +1,6 @@
 import { createTodaysWeatherCard } from './todaysWeatherUI';
 import { createHourlyForecastCard } from './hourlyForecastUI';
+import { createTenDayForecastCard } from './tenDayForecastUI';
 
 async function updateWeatherUI(weatherDataPromise) {
   let data = await weatherDataPromise;
@@ -24,6 +25,14 @@ async function updateWeatherUI(weatherDataPromise) {
 
   let hourlyForecastCard = createHourlyForecastCard(data);
   hourlyForecastContainer.appendChild(hourlyForecastCard);
+
+  let tenDayForecastContainer = document.querySelector(
+    '.ten-day-forecast-content',
+  );
+  clearContainer(tenDayForecastContainer);
+
+  let tenDayForecastCard = createTenDayForecastCard(data);
+  tenDayForecastContainer.appendChild(tenDayForecastCard);
 }
 
 function clearContainer(container) {
