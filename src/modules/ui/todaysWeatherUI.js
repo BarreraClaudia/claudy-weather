@@ -1,5 +1,5 @@
 import { format, parse } from 'date-fns';
-import { createIcon } from './icons';
+import { createWeatherIcon, createAlertIcon } from './icons';
 
 function formatTodaysDate() {
   let todaysDate = new Date();
@@ -35,69 +35,90 @@ function createConditionCard(titleName, dataValue) {
   return container;
 }
 
-function createTodaysWeatherCard(data) {
-  const fragment = document.createDocumentFragment();
+function createAlertsCard(alerts) {
+  let container = document.createElement('div');
+  container.classList.add('alerts-container');
 
-  const firstContainer = document.createElement('div');
-  firstContainer.classList.add('.first-container');
+  let icon = createAlertIcon();
+  container.appendChild(icon);
+
+  alerts.forEach((alert) => {
+    let headlinePara = document.createElement('p');
+    headlinePara.textContent = alert.headline;
+    container.appendChild(headlinePara);
+  });
+
+  return container;
+}
+
+function createTodaysWeatherCard(data) {
+  let fragment = document.createDocumentFragment();
+
+  if (data.alerts.length > 0) {
+    let alertsCard = createAlertsCard(data.alerts);
+    fragment.appendChild(alertsCard);
+  }
+
+  let summaryContainer = document.createElement('div');
+  summaryContainer.classList.add('summary-container');
 
   let locationName = document.createElement('h2');
   locationName.textContent = capitalizeEachWord(data.resolvedAddress);
-  firstContainer.appendChild(locationName);
+  summaryContainer.appendChild(locationName);
 
   let date = document.createElement('p');
   date.textContent = formatTodaysDate();
-  firstContainer.appendChild(date);
+  summaryContainer.appendChild(date);
 
-  let icon = createIcon(data.currentConditions.icon);
-  firstContainer.appendChild(icon);
+  let icon = createWeatherIcon(data.currentConditions.icon);
+  summaryContainer.appendChild(icon);
 
   let temp = document.createElement('p');
   temp.textContent = `${data.currentConditions.temp}°F`;
-  firstContainer.appendChild(temp);
+  summaryContainer.appendChild(temp);
 
   let description = document.createElement('p');
   description.textContent = data.description;
-  firstContainer.appendChild(description);
+  summaryContainer.appendChild(description);
 
-  const secondContainer = document.createElement('div');
-  secondContainer.classList.add('.second-container');
+  let conditionsContainer = document.createElement('div');
+  conditionsContainer.classList.add('conditions-container');
 
   let feelsLike = createConditionCard(
     'Feels Like',
     `${data.currentConditions.feelslike}°F`,
   );
-  secondContainer.appendChild(feelsLike);
+  conditionsContainer.appendChild(feelsLike);
 
   let wind = createConditionCard(
     'Wind Speed',
     `${data.currentConditions.windspeed} mph`,
   );
-  secondContainer.appendChild(wind);
+  conditionsContainer.appendChild(wind);
 
   let precipitation = createConditionCard(
     'Chance of Rain',
     `${data.currentConditions.precip}%`,
   );
-  secondContainer.appendChild(precipitation);
+  conditionsContainer.appendChild(precipitation);
 
   let uvIndex = createConditionCard('UV Index', data.currentConditions.uvindex);
-  secondContainer.appendChild(uvIndex);
+  conditionsContainer.appendChild(uvIndex);
 
   let sunrise = createConditionCard(
     'Sunrise',
     formatTime(data.currentConditions.sunrise),
   );
-  secondContainer.appendChild(sunrise);
+  conditionsContainer.appendChild(sunrise);
 
   let sunset = createConditionCard(
     'Sunset',
     formatTime(data.currentConditions.sunset),
   );
-  secondContainer.appendChild(sunset);
+  conditionsContainer.appendChild(sunset);
 
-  fragment.appendChild(firstContainer);
-  fragment.appendChild(secondContainer);
+  fragment.appendChild(summaryContainer);
+  fragment.appendChild(conditionsContainer);
 
   return fragment;
 }

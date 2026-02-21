@@ -1,5 +1,5 @@
 import { format, parseISO } from 'date-fns';
-import { createIcon } from './icons';
+import { createWeatherIcon } from './icons';
 
 function createTenDayForecastCard(data) {
   const fragment = document.createDocumentFragment();
@@ -11,7 +11,7 @@ function createTenDayForecastCard(data) {
     date.textContent = formatDate(obj.datetime);
     fragment.appendChild(date);
 
-    let icon = createIcon(obj.icon);
+    let icon = createWeatherIcon(obj.icon);
     fragment.appendChild(icon);
 
     let description = document.createElement('p');

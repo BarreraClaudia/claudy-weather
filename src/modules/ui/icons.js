@@ -8,7 +8,9 @@ import partlyCloudyNightScr from '../../assets/imgs/partly-cloudy-night.png';
 import clearDayScr from '../../assets/imgs/clear-day.png';
 import clearNightScr from '../../assets/imgs/clear-night.png';
 
-function createIcon(iconData) {
+import alertIconSrc from '../../assets/imgs/alert.png';
+
+function createWeatherIcon(iconData) {
   let icon = document.createElement('img');
   icon.classList.add('weather-icon');
 
@@ -48,4 +50,11 @@ function createIcon(iconData) {
   return icon;
 }
 
-export { createIcon };
+function createAlertIcon() {
+  let icon = document.createElement('img');
+  icon.classList.add('alert-icon');
+  icon.src = alertIconSrc;
+  return icon;
+}
+
+export { createWeatherIcon, createAlertIcon };
