@@ -38,9 +38,9 @@ searchLocationButton.addEventListener('click', async (event) => {
 
 let currentLocationButton = document.querySelector('.current-location-button');
 
-currentLocationButton.addEventListener('click', handleLocationClick);
+currentLocationButton.addEventListener('click', handleCurrentLocationClick);
 
-async function handleLocationClick() {
+async function handleCurrentLocationClick() {
   try {
     const position = await getPosition();
     const { latitude: lat, longitude: lng } = position.coords;
