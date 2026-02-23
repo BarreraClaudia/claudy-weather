@@ -18,8 +18,22 @@ function createTenDayForecastCard(data) {
     description.textContent = obj.description;
     fragment.appendChild(description);
 
-    let lowHighTemps = document.createElement('p');
-    lowHighTemps.textContent = `${obj.tempmin}°F / ${obj.tempmax}°F`;
+    let lowHighTemps = document.createElement('div');
+
+    let lowTemp = document.createElement('span');
+    lowTemp.classList.add('temp');
+    lowTemp.textContent = `${obj.tempmin}°F`;
+    lowHighTemps.appendChild(lowTemp);
+
+    let slash = document.createElement('span');
+    slash.textContent = ' / ';
+    lowHighTemps.appendChild(slash);
+
+    let highTemp = document.createElement('span');
+    highTemp.classList.add('temp');
+    highTemp.textContent = `${obj.tempmax}°F`;
+    lowHighTemps.appendChild(highTemp);
+
     fragment.appendChild(lowHighTemps);
   });
 

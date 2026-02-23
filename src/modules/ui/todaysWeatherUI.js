@@ -74,6 +74,7 @@ function createTodaysWeatherCard(data) {
   summaryContainer.appendChild(icon);
 
   let temp = document.createElement('p');
+  temp.classList.add('temp');
   temp.textContent = `${data.currentConditions.temp}°F`;
   summaryContainer.appendChild(temp);
 
@@ -88,6 +89,7 @@ function createTodaysWeatherCard(data) {
     'Feels Like',
     `${data.currentConditions.feelslike}°F`,
   );
+  feelsLike.children[1].classList.add('temp');
   conditionsContainer.appendChild(feelsLike);
 
   let wind = createConditionCard(

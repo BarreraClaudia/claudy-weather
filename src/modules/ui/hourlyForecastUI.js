@@ -15,6 +15,7 @@ function createHourlyForecastCard(data) {
     fragment.appendChild(icon);
 
     let temp = document.createElement('p');
+    temp.classList.add('temp');
     temp.textContent = `${obj.temp}°F`;
     fragment.appendChild(temp);
   });
