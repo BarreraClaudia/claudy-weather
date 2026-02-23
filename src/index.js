@@ -27,14 +27,16 @@ let searchLocationButton = document.querySelector('.search-location-button');
 searchLocationButton.addEventListener('click', async (event) => {
   event.preventDefault();
 
-  let locationInput = document.querySelector('#search-location').value.trim();
+  let locationInput = document.querySelector('#search-location');
+  let locationValue = locationInput.value.trim();
 
-  if (!locationInput) return;
+  if (!locationValue) return;
 
   try {
-    const weatherData = await getWeather(locationInput);
+    const weatherData = await getWeather(locationValue);
     updateWeatherUI(weatherData);
-    saveCityName(locationInput);
+    saveCityName(locationValue);
+    locationInput.value = '';
   } catch (error) {
     console.error(error.message);
   }
