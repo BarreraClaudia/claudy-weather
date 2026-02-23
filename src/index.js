@@ -8,6 +8,21 @@ import {
 import { updateWeatherUI } from './modules/ui/weatherUI.js';
 import { convertFtoC, convertCtoF } from './modules/weather/convertDegrees.js';
 
+function saveCityName(city) {
+  localStorage.setItem('City Name', city);
+}
+
+if (!localStorage.getItem('City Name')) {
+  let newYork = 'new%20york';
+  saveCityName(newYork);
+  let weatherData = getWeather(newYork);
+  updateWeatherUI(weatherData);
+} else {
+  let city = localStorage.getItem('City Name');
+  let weatherData = getWeather(city);
+  updateWeatherUI(weatherData);
+}
+
 let searchLocationButton = document.querySelector('.search-location-button');
 searchLocationButton.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -19,6 +34,7 @@ searchLocationButton.addEventListener('click', async (event) => {
   try {
     const weatherData = await getWeather(locationInput);
     updateWeatherUI(weatherData);
+    saveCityName(locationInput);
   } catch (error) {
     console.error(error.message);
   }
@@ -32,6 +48,7 @@ currentLocationButton.addEventListener('click', async () => {
     const city = await getCityFromCoords(lat, lng);
     const weatherData = await getWeather(city);
     updateWeatherUI(weatherData);
+    saveCityName(city);
   } catch (error) {
     console.error(error.message);
   }
@@ -59,6 +76,3 @@ convertDegreesButton.addEventListener('click', () => {
     convertDegreesButton.textContent = '°F';
   }
 });
-
-let weatherData = getWeather();
-updateWeatherUI(weatherData);
