@@ -9,16 +9,16 @@ import { updateWeatherUI } from './modules/ui/weatherUI.js';
 import { convertFtoC, convertCtoF } from './modules/weather/convertDegrees.js';
 
 function saveCityName(city) {
-  localStorage.setItem('City Name', city);
+  localStorage.setItem('city-name', city);
 }
 
-if (!localStorage.getItem('City Name')) {
-  let newYork = 'new%20york';
-  saveCityName(newYork);
-  let weatherData = getWeather(newYork);
+if (!localStorage.getItem('city-name')) {
+  let city = 'chicago';
+  saveCityName(city);
+  let weatherData = getWeather(city);
   updateWeatherUI(weatherData);
 } else {
-  let city = localStorage.getItem('City Name');
+  let city = localStorage.getItem('city-name');
   let weatherData = getWeather(city);
   updateWeatherUI(weatherData);
 }
@@ -65,6 +65,7 @@ convertDegreesButton.addEventListener('click', () => {
       let splitTemp = temp.textContent.split('°');
       let tempInC = convertFtoC(splitTemp[0]);
       temp.textContent = `${tempInC}°C`;
+      //   saveDegrees('c');
     });
 
     convertDegreesButton.textContent = '°C';
