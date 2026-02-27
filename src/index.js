@@ -5,22 +5,31 @@ import {
   getPosition,
   getCityFromCoords,
 } from './modules/weather/weatherAPI.js';
-import { updateWeatherUI } from './modules/ui/weatherUI.js';
+import {
+  updateWeatherUI,
+  updateDegreesUnitButtonUI,
+} from './modules/ui/weatherUI.js';
+import {
+  saveCityName,
+  getCityName,
+  saveDegreesUnit,
+  getDegreesUnit,
+} from './modules/storage/localStorage.js';
 import { convertFtoC, convertCtoF } from './modules/weather/convertDegrees.js';
 
-function saveCityName(city) {
-  localStorage.setItem('city-name', city);
-}
-
-if (!localStorage.getItem('city-name')) {
+if (!getCityName()) {
   let city = 'chicago';
   saveCityName(city);
   let weatherData = getWeather(city);
   updateWeatherUI(weatherData);
 } else {
-  let city = localStorage.getItem('city-name');
+  let city = getCityName();
   let weatherData = getWeather(city);
   updateWeatherUI(weatherData);
+}
+
+if (!getDegreesUnit()) {
+  saveDegreesUnit('°F');
 }
 
 let searchLocationButton = document.querySelector('.search-location-button');
@@ -60,22 +69,21 @@ let convertDegreesButton = document.querySelector('.convert-degrees-button');
 convertDegreesButton.addEventListener('click', () => {
   let temps = document.querySelectorAll('.temp');
 
-  if (convertDegreesButton.textContent === '°F') {
+  if (getDegreesUnit() === '°F') {
     temps.forEach((temp) => {
       let splitTemp = temp.textContent.split('°');
       let tempInC = convertFtoC(splitTemp[0]);
       temp.textContent = `${tempInC}°C`;
-      //   saveDegrees('c');
     });
-
-    convertDegreesButton.textContent = '°C';
-  } else if (convertDegreesButton.textContent === '°C') {
+    saveDegreesUnit('°C');
+    updateDegreesUnitButtonUI();
+  } else if (getDegreesUnit() === '°C') {
     temps.forEach((temp) => {
       let splitTemp = temp.textContent.split('°');
       let tempInF = convertCtoF(splitTemp[0]);
       temp.textContent = `${tempInF}°F`;
     });
-
-    convertDegreesButton.textContent = '°F';
+    saveDegreesUnit('°F');
+    updateDegreesUnitButtonUI();
   }
 });

@@ -1,5 +1,7 @@
 import { format, parse } from 'date-fns';
 import { createWeatherIcon } from './icons';
+import { getDegreesUnit } from '../storage/localStorage';
+import { convertFtoC } from '../weather/convertDegrees';
 
 function createHourlyForecastCard(data) {
   const fragment = document.createDocumentFragment();
@@ -16,7 +18,11 @@ function createHourlyForecastCard(data) {
 
     let temp = document.createElement('p');
     temp.classList.add('temp');
-    temp.textContent = `${obj.temp}°F`;
+
+    getDegreesUnit() === '°F'
+      ? (temp.textContent = `${obj.temp}°F`)
+      : (temp.textContent = `${convertFtoC(obj.temp)}°C`);
+
     fragment.appendChild(temp);
   });
 

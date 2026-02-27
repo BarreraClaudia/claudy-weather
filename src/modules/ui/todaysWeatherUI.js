@@ -1,5 +1,7 @@
 import { format, parse } from 'date-fns';
 import { createWeatherIcon, createAlertIcon } from './icons';
+import { getDegreesUnit } from '../storage/localStorage';
+import { convertFtoC } from '../weather/convertDegrees';
 
 function formatTodaysDate() {
   let todaysDate = new Date();
@@ -75,7 +77,9 @@ function createTodaysWeatherCard(data) {
 
   let temp = document.createElement('p');
   temp.classList.add('temp');
-  temp.textContent = `${data.currentConditions.temp}°F`;
+  getDegreesUnit() === '°F'
+    ? (temp.textContent = `${data.currentConditions.temp}°F`)
+    : (temp.textContent = `${convertFtoC(data.currentConditions.temp)}°C`);
   summaryContainer.appendChild(temp);
 
   let description = document.createElement('p');
@@ -87,7 +91,9 @@ function createTodaysWeatherCard(data) {
 
   let feelsLike = createConditionCard(
     'Feels Like',
-    `${data.currentConditions.feelslike}°F`,
+    getDegreesUnit() === '°F'
+      ? `${data.currentConditions.feelslike}°F`
+      : `${convertFtoC(data.currentConditions.feelslike)}°C`,
   );
   feelsLike.children[1].classList.add('temp');
   conditionsContainer.appendChild(feelsLike);

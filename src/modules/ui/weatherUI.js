@@ -1,6 +1,7 @@
 import { createTodaysWeatherCard } from './todaysWeatherUI';
 import { createHourlyForecastCard } from './hourlyForecastUI';
 import { createTenDayForecastCard } from './tenDayForecastUI';
+import { getDegreesUnit } from '../storage/localStorage';
 
 async function updateWeatherUI(weatherDataPromise) {
   let data = await weatherDataPromise;
@@ -33,10 +34,17 @@ async function updateWeatherUI(weatherDataPromise) {
 
   let tenDayForecastCard = createTenDayForecastCard(data);
   tenDayForecastContainer.appendChild(tenDayForecastCard);
+
+  updateDegreesUnitButtonUI();
 }
 
 function clearContainer(container) {
   container.textContent = '';
 }
 
-export { updateWeatherUI };
+function updateDegreesUnitButtonUI() {
+  let button = document.querySelector('.convert-degrees-button');
+  button.textContent = getDegreesUnit();
+}
+
+export { updateWeatherUI, updateDegreesUnitButtonUI };
