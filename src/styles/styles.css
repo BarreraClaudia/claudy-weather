@@ -138,6 +138,7 @@ body {
 }
 
 .weather-icon,
-.alert-icon {
+.alert-icon,
+.logo {
   width: 60px;
 }
