@@ -123,13 +123,41 @@ Font size variables
 
 /*
 ---------------
+Space variables
+---------------
+*/
+
+/* https://utopia.fyi/space/calculator?c=320,16,1.2,1728,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12 */
+:root {
+  /* Space 3xs: 4px → 5px */
+  --space-3xs: clamp(0.25rem, 0.2358rem + 0.071vw, 0.3125rem);
+  /* Space 2xs: 8px → 10px */
+  --space-2xs: clamp(0.5rem, 0.4716rem + 0.142vw, 0.625rem);
+  /* Space xs: 12px → 15px */
+  --space-xs: clamp(0.75rem, 0.7074rem + 0.2131vw, 0.9375rem);
+  /* Space s: 16px → 20px */
+  --space-s: clamp(1rem, 0.9432rem + 0.2841vw, 1.25rem);
+  /* Space m: 24px → 30px */
+  --space-m: clamp(1.5rem, 1.4148rem + 0.4261vw, 1.875rem);
+  /* Space l: 32px → 40px */
+  --space-l: clamp(2rem, 1.8864rem + 0.5682vw, 2.5rem);
+  /* Space xl: 48px → 60px */
+  --space-xl: clamp(3rem, 2.8295rem + 0.8523vw, 3.75rem);
+  /* Space 2xl: 64px → 80px */
+  --space-2xl: clamp(4rem, 3.7727rem + 1.1364vw, 5rem);
+  /* Space 3xl: 96px → 120px */
+  --space-3xl: clamp(6rem, 5.6591rem + 1.7045vw, 7.5rem);
+}
+
+/*
+---------------
 Font (replace with your own)
 ---------------
 */
 
 /*
 ---------------
-Layout (replace below with your own styles)
+Layout
 ---------------
 */
 
@@ -141,4 +169,82 @@ body {
 .alert-icon,
 .logo {
   width: 60px;
+}
+
+header,
+.todays-weather,
+.hourly-forecast,
+.ten-day-forecast,
+footer {
+  max-width: 1200px;
+  padding: var(--space-s);
+  margin: 0 auto;
+}
+
+/* Everything within header below */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: #dbe1e4 solid 2px;
+}
+
+.logo-and-name-container,
+.form-and-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.current-location-button,
+.convert-degrees-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  background-color: #4d87a1;
+}
+
+.search-location-form {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #dbe1e4;
+  border-radius: 5px;
+}
+
+#search-location {
+  all: unset;
+  padding: 0.5rem;
+}
+
+#search-location::placeholder,
+.search-icon {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.search-location-button {
+  display: flex;
+  align-items: center;
+
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (max-width: 650px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

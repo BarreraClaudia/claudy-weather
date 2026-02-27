@@ -7,23 +7,36 @@
 
     <link rel="icon" type="img/png" href="./assets/imgs/storm.png">
 
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <title>ClaudyWeather</title>
 </head>
 
 <body>
     <header>
-        <img src="./assets/imgs/storm.png" alt="storm icon" class="logo">
-        <h1>ClaudyWeather</h1>
+        <div class="logo-and-name-container">
+            <img src="./assets/imgs/storm.png" alt="storm icon" class="logo">
+            <h1>ClaudyWeather</h1>
+        </div>
 
-        <form>
-            <input type="search" name="search-location" id="search-location" placeholder="Search Location" required>
-            <button class="search-location-button">Search</button>
-            <span class="input-error" aria-live="polite"></span>
-        </form>
+        <div class="form-and-buttons-container">
+            <form class="search-location-form">
+                <input type="search" name="search-location" id="search-location" placeholder="Search Location" required>
+                <button class="search-location-button">
+                    <span class="material-symbols-outlined search-icon">
+                        search
+                    </span>
+                </button>
+            </form>
 
-        <button class="current-location-button">Current Location</button>
+            <button class="current-location-button">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+            </button>
 
-        <button class="convert-degrees-button" type="button">°F</button>
+            <button class="convert-degrees-button" type="button">°F</button>
+        </div>
     </header>
 
     <div class="todays-weather">
@@ -36,7 +49,7 @@
         <div class="hourly-forecast-content"></div>
     </div>
 
-    <div class="10-day-forecast">
+    <div class="ten-day-forecast">
         <h2>10 Day Forecast</h2>
         <div class="ten-day-forecast-content"></div>
     </div>
