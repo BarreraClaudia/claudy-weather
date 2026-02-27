@@ -26,7 +26,7 @@ function createConditionCard(titleName, dataValue) {
   let container = document.createElement('div');
   container.classList.add('condition-card');
 
-  let title = document.createElement('p');
+  let title = document.createElement('h4');
   title.textContent = titleName;
   container.appendChild(title);
 
@@ -64,7 +64,7 @@ function createTodaysWeatherCard(data) {
   let summaryContainer = document.createElement('div');
   summaryContainer.classList.add('summary-container');
 
-  let locationName = document.createElement('h2');
+  let locationName = document.createElement('h3');
   locationName.textContent = capitalizeEachWord(data.resolvedAddress);
   summaryContainer.appendChild(locationName);
 
