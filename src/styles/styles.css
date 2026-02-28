@@ -270,3 +270,86 @@ header {
     gap: 1rem;
   }
 }
+
+/* Everything within Today's Weather below */
+
+.todays-weather {
+  margin: var(--space-xl) auto;
+  text-align: center;
+}
+
+.alerts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  padding: var(--space-s);
+  margin-top: var(--space-s);
+
+  background-color: rgb(226, 27, 70);
+  border-radius: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.todays-weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--space-s);
+  padding: var(--space-m);
+  margin-top: var(--space-m);
+
+  background-color: #c6e5f7;
+  border-radius: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  padding: var(--space-s);
+}
+
+.todays-icon-and-temp-container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: var(--space-xs);
+
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.todays-description {
+  max-width: 40ch;
+}
+
+.conditions-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: var(--space-m);
+}
+
+.condition-card {
+  padding: var(--space-xs);
+
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.condition-card > :first-child {
+  border-bottom: #dbe1e4 solid 2px;
+  margin-bottom: var(--space-2xs);
+}
+
+@media screen and (max-width: 800px) {
+  .todays-weather-info {
+    flex-direction: column;
+  }
+}

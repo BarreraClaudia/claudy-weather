@@ -72,17 +72,23 @@ function createTodaysWeatherCard(data) {
   date.textContent = formatTodaysDate();
   summaryContainer.appendChild(date);
 
+  let iconAndTempContainer = document.createElement('div');
+  iconAndTempContainer.classList.add('todays-icon-and-temp-container');
+
   let icon = createWeatherIcon(data.currentConditions.icon);
-  summaryContainer.appendChild(icon);
+  iconAndTempContainer.appendChild(icon);
 
   let temp = document.createElement('p');
   temp.classList.add('temp');
   getDegreesUnit() === '°F'
     ? (temp.textContent = `${data.currentConditions.temp}°F`)
     : (temp.textContent = `${convertFtoC(data.currentConditions.temp)}°C`);
-  summaryContainer.appendChild(temp);
+  iconAndTempContainer.appendChild(temp);
+
+  summaryContainer.appendChild(iconAndTempContainer);
 
   let description = document.createElement('p');
+  description.classList.add('todays-description');
   description.textContent = data.description;
   summaryContainer.appendChild(description);
 
@@ -105,7 +111,7 @@ function createTodaysWeatherCard(data) {
   conditionsContainer.appendChild(wind);
 
   let precipitation = createConditionCard(
-    'Chance of Rain',
+    'Rain',
     `${data.currentConditions.precip}%`,
   );
   conditionsContainer.appendChild(precipitation);
@@ -125,8 +131,12 @@ function createTodaysWeatherCard(data) {
   );
   conditionsContainer.appendChild(sunset);
 
-  fragment.appendChild(summaryContainer);
-  fragment.appendChild(conditionsContainer);
+  let todaysWeatherInfo = document.createElement('div');
+  todaysWeatherInfo.classList.add('todays-weather-info');
+  todaysWeatherInfo.appendChild(summaryContainer);
+  todaysWeatherInfo.appendChild(conditionsContainer);
+
+  fragment.appendChild(todaysWeatherInfo);
 
   return fragment;
 }
