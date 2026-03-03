@@ -236,6 +236,10 @@ header {
   background-color: #4d87a1;
 }
 
+.convert-degrees-button {
+  font-weight: 500;
+}
+
 .search-location-form {
   height: 40px;
 
@@ -288,7 +292,7 @@ header {
   margin-top: var(--space-s);
 
   background-color: rgb(226, 27, 70);
-  border-radius: 30px;
+  border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -301,7 +305,7 @@ header {
   margin-top: var(--space-m);
 
   background-color: #c6e5f7;
-  border-radius: 30px;
+  border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -339,7 +343,7 @@ header {
   padding: var(--space-xs);
 
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
