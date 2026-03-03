@@ -357,3 +357,37 @@ header {
     flex-direction: column;
   }
 }
+
+/* Everything within Hourly Forecast below */
+
+.hourly-forecast {
+  margin: var(--space-xl) auto;
+}
+
+.hourly-forecast h2 {
+  text-align: center;
+}
+
+.hourly-forecast-content {
+  padding: var(--space-xs);
+  margin-top: var(--space-s);
+
+  display: flex;
+  gap: var(--space-m);
+
+  overflow-x: scroll;
+}
+
+.hourly-forecast-card {
+  min-width: 125px;
+  padding: var(--space-s);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}

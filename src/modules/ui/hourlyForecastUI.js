@@ -4,17 +4,20 @@ import { getDegreesUnit } from '../storage/localStorage';
 import { convertFtoC } from '../weather/convertDegrees';
 
 function createHourlyForecastCard(data) {
-  const fragment = document.createDocumentFragment();
+  let fragment = document.createDocumentFragment();
 
   let twelveHoursArray = createTwelveHoursArray(data);
 
   twelveHoursArray.forEach((obj) => {
+    let hourlyForecastCard = document.createElement('div');
+    hourlyForecastCard.classList.add('hourly-forecast-card');
+
     let time = document.createElement('p');
     time.textContent = formatTime(obj.datetime);
-    fragment.appendChild(time);
+    hourlyForecastCard.appendChild(time);
 
     let icon = createWeatherIcon(obj.icon);
-    fragment.appendChild(icon);
+    hourlyForecastCard.appendChild(icon);
 
     let temp = document.createElement('p');
     temp.classList.add('temp');
@@ -23,7 +26,9 @@ function createHourlyForecastCard(data) {
       ? (temp.textContent = `${obj.temp}°F`)
       : (temp.textContent = `${convertFtoC(obj.temp)}°C`);
 
-    fragment.appendChild(temp);
+    hourlyForecastCard.appendChild(temp);
+
+    fragment.appendChild(hourlyForecastCard);
   });
 
   return fragment;
