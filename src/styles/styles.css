@@ -169,6 +169,7 @@ h3 {
 }
 
 h2 {
+  font-family: 'Anta', sans-serif;
   font-size: var(--step-4);
 }
 
@@ -390,4 +391,61 @@ header {
 
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Everything within 10 day Forecast below */
+
+.ten-day-forecast h2 {
+  text-align: center;
+  margin-bottom: var(--space-m);
+}
+
+.day-container {
+  margin: var(--space-s) 0;
+  padding: var(--space-xs);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  gap: var(--space-xs);
+  align-items: center;
+
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.day-of-the-week-and-date-container {
+  justify-self: start;
+  text-align: center;
+}
+
+.low-high-temps {
+  justify-self: end;
+  text-align: center;
+
+  display: flex;
+  gap: var(--space-2xs);
+}
+
+.low-high-temps > :first-child {
+  border-right: 2px solid #a7a8a9;
+  padding-right: var(--space-2xs);
+}
+
+@media screen and (max-width: 620px) {
+  .day-and-date-container {
+    justify-self: center;
+  }
+
+  .low-high-temps {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .low-high-temps > :first-child {
+    border-right: none;
+    padding-right: 0;
+
+    border-bottom: 2px solid #a7a8a9;
+    padding-bottom: var(--space-2xs);
+  }
 }

@@ -9,18 +9,33 @@ function createTenDayForecastCard(data) {
   let tenDaysArray = createTenDaysArray(data);
 
   tenDaysArray.forEach((obj) => {
+    let dayContainer = document.createElement('div');
+    dayContainer.classList.add('day-container');
+
+    let dayOfTheWeekAndDateContainer = document.createElement('div');
+    dayOfTheWeekAndDateContainer.classList.add(
+      'day-of-the-week-and-date-container',
+    );
+
+    let dayOfTheWeek = document.createElement('p');
+    dayOfTheWeek.textContent = formatDayOfTheWeek(obj.datetime);
+    dayOfTheWeekAndDateContainer.appendChild(dayOfTheWeek);
+
     let date = document.createElement('p');
     date.textContent = formatDate(obj.datetime);
-    fragment.appendChild(date);
+    dayOfTheWeekAndDateContainer.appendChild(date);
+
+    dayContainer.appendChild(dayOfTheWeekAndDateContainer);
 
     let icon = createWeatherIcon(obj.icon);
-    fragment.appendChild(icon);
+    dayContainer.appendChild(icon);
 
     let description = document.createElement('p');
     description.textContent = obj.description;
-    fragment.appendChild(description);
+    dayContainer.appendChild(description);
 
     let lowHighTemps = document.createElement('div');
+    lowHighTemps.classList.add('low-high-temps');
 
     let lowTemp = document.createElement('span');
     lowTemp.classList.add('temp');
@@ -31,10 +46,6 @@ function createTenDayForecastCard(data) {
 
     lowHighTemps.appendChild(lowTemp);
 
-    let slash = document.createElement('span');
-    slash.textContent = ' / ';
-    lowHighTemps.appendChild(slash);
-
     let highTemp = document.createElement('span');
     highTemp.classList.add('temp');
 
@@ -44,7 +55,8 @@ function createTenDayForecastCard(data) {
 
     lowHighTemps.appendChild(highTemp);
 
-    fragment.appendChild(lowHighTemps);
+    dayContainer.appendChild(lowHighTemps);
+    fragment.appendChild(dayContainer);
   });
 
   return fragment;
@@ -57,9 +69,16 @@ function createTenDaysArray(data) {
   return tenDaysArray;
 }
 
+function formatDayOfTheWeek(date) {
+  let parsedDate = parseISO(date);
+  let formattedDate = format(parsedDate, 'EEE');
+
+  return formattedDate;
+}
+
 function formatDate(date) {
   let parsedDate = parseISO(date);
-  let formattedDate = format(parsedDate, 'EEE M/d');
+  let formattedDate = format(parsedDate, 'M/d');
 
   return formattedDate;
 }
