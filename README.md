@@ -1,6 +1,6 @@
 # Claudy Weather
 
-Claudy... get it? Because my name is Claudia and cloudy.. lol you know what never mind. Anyways! Here's a weather app using Visual Crossing Weather API. It displays today's conditions, hourly forecast, and 10 day forecast.
+Claudy Weather... get it? Because my name is Claudia and cloudy.. lol you know what never mind. Anyways! Here's a weather app using Visual Crossing Weather API. It displays today's conditions, hourly forecast, and 10 day forecast.
 
 <img src="./src/assets/imgs/webpage-screenshot.png">
 
