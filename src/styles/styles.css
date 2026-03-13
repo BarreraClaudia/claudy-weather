@@ -191,7 +191,7 @@ body {
 .weather-icon,
 .alert-icon,
 .logo {
-  width: 60px;
+  width: 50px;
 }
 
 header,
@@ -367,21 +367,12 @@ header {
 
 .hourly-forecast h2 {
   text-align: center;
-}
-
-.hourly-forecast-content {
-  padding: var(--space-xs);
-  margin-top: var(--space-s);
-
-  display: flex;
-  gap: var(--space-m);
-
-  overflow-x: scroll;
+  margin-bottom: var(--space-s);
 }
 
 .hourly-forecast-card {
-  min-width: 125px;
-  padding: var(--space-s);
+  min-width: max-content;
+  padding: var(--space-xs) var(--space-m);
 
   display: flex;
   flex-direction: column;
@@ -389,8 +380,33 @@ header {
   justify-content: center;
   gap: var(--space-xs);
 
-  border-radius: 15px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  border-right: 2px solid #a7a8a9;
+}
+
+.hourly-forecast-card:last-of-type {
+  border-right: none;
+}
+
+.scroll-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* same div as .hourly-forecast-content */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+}
+
+.left-arrow-button,
+.right-arrow-button {
+  font-size: var(--step-4);
+  background: transparent;
+  border: none;
 }
 
 /* Everything within 10 day Forecast below */

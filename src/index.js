@@ -87,3 +87,19 @@ convertDegreesButton.addEventListener('click', () => {
     updateDegreesUnitButtonUI();
   }
 });
+
+let leftArrowButton = document.querySelector('.left-arrow-button');
+leftArrowButton.addEventListener('click', () => {
+  scrollCards(-200);
+});
+
+let rightArrowButton = document.querySelector('.right-arrow-button');
+rightArrowButton.addEventListener('click', () => {
+  scrollCards(200);
+});
+
+function scrollCards(amount) {
+  document
+    .querySelector('.scroll-container')
+    .scrollBy({ left: amount, behavior: 'smooth' });
+}

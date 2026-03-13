@@ -37,11 +37,11 @@ function createHourlyForecastCard(data) {
 function createTwelveHoursArray(data) {
   let hoursArray = data.days[0].hours;
   let currentHour = getCurrentHour();
-  let slicedArray = hoursArray.slice(currentHour, currentHour + 12);
+  let slicedArray = hoursArray.slice(currentHour, currentHour + 13);
 
-  if (slicedArray.length < 12) {
+  if (slicedArray.length < 13) {
     let nextDayHoursArray = data.days[1].hours;
-    let index = 12 - slicedArray.length;
+    let index = 13 - slicedArray.length;
     let slicedNextDayHoursArray = nextDayHoursArray.slice(0, index);
     let mergedArray = [...slicedArray, ...slicedNextDayHoursArray];
     return mergedArray;
