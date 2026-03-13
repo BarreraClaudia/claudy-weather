@@ -186,6 +186,8 @@ Layout
 
 body {
   min-height: 100vh;
+  color: #1a1a1a;
+  background-color: #f4f1ec;
 }
 
 .weather-icon,
@@ -197,8 +199,7 @@ body {
 header,
 .todays-weather,
 .hourly-forecast,
-.ten-day-forecast,
-footer {
+.ten-day-forecast {
   max-width: 1200px;
   padding: var(--space-s);
   margin: 0 auto;
@@ -211,7 +212,7 @@ header {
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: #dbe1e4 solid 2px;
+  border-bottom: #e6e0d6 solid 2px;
 }
 
 .logo-and-name-container,
@@ -233,8 +234,8 @@ header {
   border-radius: 5px;
   border: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  background-color: #4d87a1;
+  color: #f4f1ec;
+  background-color: #e68264;
 }
 
 .convert-degrees-button {
@@ -247,7 +248,7 @@ header {
   display: flex;
   align-items: center;
 
-  background-color: #dbe1e4;
+  background-color: #e6e0d6;
   border-radius: 5px;
 }
 
@@ -292,7 +293,7 @@ header {
   padding: var(--space-s);
   margin-top: var(--space-s);
 
-  background-color: rgb(226, 27, 70);
+  background-color: #ffde50;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
@@ -305,7 +306,7 @@ header {
   padding: var(--space-m);
   margin-top: var(--space-m);
 
-  background-color: #c6e5f7;
+  background-color: #84abc1;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
@@ -343,13 +344,13 @@ header {
 .condition-card {
   padding: var(--space-xs);
 
-  background-color: #fff;
+  background-color: #f4f1ec;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .condition-card > :first-child {
-  border-bottom: #dbe1e4 solid 2px;
+  border-bottom: #84abc1 solid 2px;
   margin-bottom: var(--space-2xs);
 }
 
@@ -380,7 +381,7 @@ header {
   justify-content: center;
   gap: var(--space-xs);
 
-  border-right: 2px solid #a7a8a9;
+  border-right: 2px solid #84abc1;
 }
 
 .hourly-forecast-card:last-of-type {
@@ -404,12 +405,17 @@ header {
 
 .left-arrow-button,
 .right-arrow-button {
-  font-size: var(--step-4);
+  font-size: var(--step-5);
+  color: #e68264;
   background: transparent;
   border: none;
 }
 
 /* Everything within 10 day Forecast below */
+
+.ten-day-forecast {
+  margin: var(--space-xl) auto;
+}
 
 .ten-day-forecast h2 {
   text-align: center;
@@ -427,6 +433,7 @@ header {
 
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  background-color: #e6e0d6;
 }
 
 .day-of-the-week-and-date-container {
@@ -443,7 +450,7 @@ header {
 }
 
 .low-high-temps > :first-child {
-  border-right: 2px solid #a7a8a9;
+  border-right: 2px solid #84abc1;
   padding-right: var(--space-2xs);
 }
 
@@ -461,7 +468,19 @@ header {
     border-right: none;
     padding-right: 0;
 
-    border-bottom: 2px solid #a7a8a9;
+    border-bottom: 2px solid #84abc1;
     padding-bottom: var(--space-2xs);
   }
+}
+
+/* Footer */
+
+footer {
+  padding: var(--space-s);
+  text-align: center;
+  background-color: #84abc1;
+}
+
+footer a {
+  color: #f4f1ec;
 }
