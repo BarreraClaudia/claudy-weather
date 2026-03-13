@@ -1,6 +1,23 @@
-# Webpack Template
+# Claudy Weather
 
-Get started with your webpack project. Configured for html, css, images and fonts.
+Claudy... get it? Because my name is Claudia and cloudy.. lol you know what never mind. Anyways! Here's a weather app using Visual Crossing Weather API. It displays today's conditions, hourly forecast, and 10 day forecast.
+
+<img src="./src/assets/imgs/webpage-screenshot.png">
+
+## Features
+
+- Location search by city name
+- Current location detection via browser GPS
+- Temperature unit toggle (°F / °C)
+
+## Tech Stack
+
+<!-- Badges from https://github.com/Ileriayo/markdown-badges -->
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
 ## Usage
 
